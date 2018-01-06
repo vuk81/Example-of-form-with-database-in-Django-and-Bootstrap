@@ -1,0 +1,24 @@
+.subMenu {
+	margin-top: 55px;
+	display: none;
+}
+
+.subMenu li {
+	list-style-type: none;
+	padding: 0 10px;
+}
+
+.subMenu a {
+	color: inherit;
+	text-decoration: none;
+}
+.row-centered {
+	text-align: center;
+	width: 30%;
+	margin:0 auto;
+}
+
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}

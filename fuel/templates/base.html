@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+    	{% block title %}
+    	{% endblock %}
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Custom made CSS file -->
+    <link rel="stylesheet" type="text/css" href="../resources/css/fuel.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!--Navigation menu -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item mr-2">
+            <a class="nav-link" href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>  Dashboard</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a class="nav-link" href="#"><i class="fa fa-flask" aria-hidden="true"></i>  Analysis</a>
+          </li>
+          <li class="nav-item mr-2" id="assets">
+            <a class="nav-link" onmouseover="showAssets()" href="#"><i class="fa fa-cubes" aria-hidden="true"></i>  Assets</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a class="nav-link" href="#"><i class="fa fa-book" aria-hidden="true"></i>  Reports</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav> <!--End of navigation menu -->
+
+    <div class="container-fluid navbar-light bg-light subMenu" id="subMenu">
+        <div class="row row-centered">
+            <div class="col-centered"><li class="nav-item"><a href="">Chemicals</a></li></div>
+            <div class="col-centered"><li class="nav-item"><a href="">Glassware</a></li></div>
+            <div class="col-centered"><li class="nav-item"><a href="">Instruments</a></li></div>
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script>
+        function showAssets() {document.getElementById("subMenu").style.display="block";}
+    </script>
+  </body>
+</html>

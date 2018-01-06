@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load chem_exp %}
+
+{% block title %}List of available chemicals{% endblock %}
+{% block body %}
+<div class="container-fluid ml-2 mr-2 mt-5">
+	<div class="row">
+		<div class="col border rounded">
+			<form action="" method="post">
+			{% csrf_token %}
+			  <div class="form-group">
+			    <label for="iupac_name">IUPAC name</label>
+			    <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="iupac_name">
+			  </div>
+			  <div class="form-group">
+			    <label for="manufacturer">Manufacturer</label>
+			    <input type="text" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="" name="manufacturer">
+			  </div>
+			  <div class="form-group">
+			    <label for="data_expire">Date of expiry</label>
+			    <input type="text" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="YYYY-MM-DD" name="data_expire">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		<div class="col-9">
+			<table class="table table-sm table-hover">
+				<thead class="thead-light">
+					<tr>
+					  <th scope="col">#</th>
+				      <th scope="col">Chemical</th>
+				      <th scope="col">Manufacturer</th>
+				      <th scope="col">Date of opening</th>
+				      <th scope="col">Valid until</th>
+				      <th scope="col"></th>
+				    </tr>
+				</thead>
+					{% for item in chem %}
+						{% if item|chemical_expired %} <!--Displays a warning if current date is less then 30 days of expiry -->
+							<tbody class="bg-danger">
+						{% else %}
+							<tbody>
+						{% endif %}
+							<tr>
+							    <th scope="row">{{ item.id }}</th>
+							    <td>{{ item.iupac_name }}</td>
+						        <td>{{ item.manufacturer }}</td>
+					   	        <td>{{ item.data_enter }}</td>
+							    <td>{{ item.data_expire }}</td>
+							    <td>
+									<!-- Button trigger modal -->
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ item.id }}">
+									  <i class="fa fa-trash-o" aria-hidden="true"></i>
+									</button>
+
+									<!-- Modal -->
+									<div class="modal fade" id="{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <h5 class="modal-title" id="exampleModalLabel">Delete chemical from database</h5>
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									          <span aria-hidden="true">&times;</span>
+									        </button>
+									      </div>
+									      <div class="modal-body">
+									        <p>This action will delete chemical {{ item.iupac_name }} from data base. Are you sure?</p>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									        <button type="submit" class="btn btn-secondary"><a style="text-decoration:none;" href="chemicals/delete/{{item.id}}">Delete</a></button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
+								</td>		
+							</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- end of div class-row -->
+</div> <!-- end of div class-container -->
+{% endblock %}
